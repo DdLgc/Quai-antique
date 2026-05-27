@@ -3,6 +3,19 @@
 
 // Include any default variable overrides here (though functions won’t be available)
 
+$primary: #28afb0;
+$secondary: #f4d35e;
+$black: #3e4640;
+$danger: red;
+$white: rgb(255, 243, 243);
+$font-family-sans-serif:"handlee", sans-serif !default;
+$font-family-serif:"merienda", serif !default;
+
+
+
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 // Then add additional custom code here
+h1 {
+    font-family: "Caveat", cursive;
+}
