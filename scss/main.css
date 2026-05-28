@@ -11862,7 +11862,20 @@ textarea.form-control-lg {
   }
 }
 h1, .h1 {
+  color: #28afb0;
   font-family: "Caveat", cursive;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+footer.footer {
+  padding: 15px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 
 /*# sourceMappingURL=main.css.map */
