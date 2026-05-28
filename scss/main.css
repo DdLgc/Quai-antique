@@ -11871,6 +11871,36 @@ html {
   min-height: 100%;
 }
 
+p {
+  font-family: "merienda", serif;
+  font-size: 18px;
+}
+
+.hero-scene {
+  position: relative;
+}
+.hero-scene::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/FondHeroScene.jpg);
+  background-size: cover;
+  filter: brightness(0.3);
+}
+.hero-scene * {
+  position: relative;
+}
+.hero-scene .hero-scene-content {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 footer.footer {
   padding: 15px;
   position: absolute;
