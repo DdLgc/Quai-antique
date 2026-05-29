@@ -11948,4 +11948,10 @@ footer.footer {
   color: #28afb0;
 }
 
+.allreservations a {
+  display: block;
+  color: #3e4640;
+  padding: 10px;
+}
+
 /*# sourceMappingURL=main.css.map */
