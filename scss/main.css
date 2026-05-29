@@ -11871,6 +11871,10 @@ html {
   min-height: 100%;
 }
 
+main {
+  margin-bottom: 250px;
+}
+
 p {
   font-family: "merienda", serif;
   font-size: 18px;
@@ -11906,6 +11910,27 @@ footer.footer {
   position: absolute;
   width: 100%;
   bottom: 0;
+}
+
+.image-card {
+  position: relative;
+}
+.image-card:hover .titre-image {
+  opacity: 1;
+}
+.image-card:hover img {
+  filter: brightness(0.3);
+}
+.image-card img {
+  transition: all 0.3s;
+}
+.image-card .titre-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all 0.3s;
 }
 
 /*# sourceMappingURL=main.css.map */
