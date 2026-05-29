@@ -49,11 +49,21 @@ footer.footer {
 .image-card {
   position: relative;
   &:hover {
-    .titre-image {
+    .titre-image, 
+    .action-image-buttons{
       opacity: 1;
     }
     img {
       filter: brightness(0.3);
+    }
+    .action-image-buttons{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 5px;
+      display: flex;
+      justify-content: space-between;
     }
   }
 
