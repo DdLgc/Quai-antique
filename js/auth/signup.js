@@ -15,7 +15,7 @@ function validateForm() {
   const prenomOk = validateRequired(inputPreNom);
   const mailOk = validateRequired(inputMail);
   const passwordOk = validatePassword(inputPassword);
-  const passworConfirmOk = validateConfirmationPassword(
+  const passwordConfirmOk = validateConfirmationPassword(
     inputPassword,
     inputValidationPassword,
   );
