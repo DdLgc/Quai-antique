@@ -89,8 +89,6 @@ function validateConfirmationPassword(inputPwd, inputConfirmPwd) {
 function inscrireUtilisateur() {
   let dataForm = new FormData(formInscription);
 
-  let name = dataForm.get("name");
-
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
@@ -108,7 +106,7 @@ function inscrireUtilisateur() {
     redirect: "follow",
   };
 
-  fetch("https://127.0.0.1:8000/api/registration", requestOptions)
+  fetch(apiUrl+"registration", requestOptions)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Erreur lors de l'inscription");
