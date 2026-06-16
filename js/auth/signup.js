@@ -87,7 +87,6 @@ function validateConfirmationPassword(inputPwd, inputConfirmPwd) {
 }
 
 function inscrireUtilisateur() {
-
   let dataForm = new FormData(formInscription);
 
   let name = dataForm.get("name");
@@ -110,7 +109,23 @@ function inscrireUtilisateur() {
   };
 
   fetch("https://127.0.0.1:8000/api/registration", requestOptions)
-    .then((response) => response.json())
-    .then((result) => console.log(result))
-    .catch((error) => console.error(error));
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erreur lors de l'inscription");
+      }
+
+      return response.json();
+    })
+    .then(() => {
+      alert(
+        "Bravo " +
+          dataForm.get("prenom") +
+          " vous êtes maintenant inscrit, vous pouvez vous connecter",
+      );
+      document.location.href = "/signin";
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("Erreur lors de l'inscription");
+    });
 }
