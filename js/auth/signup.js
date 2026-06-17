@@ -106,7 +106,7 @@ function inscrireUtilisateur() {
     redirect: "follow",
   };
 
-  fetch(apiUrl+"registration", requestOptions)
+  fetch(apiUrl + "registration", requestOptions)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Erreur lors de l'inscription");
