@@ -20,7 +20,6 @@ function getImage(titre, urlImage) {
     const imageContainer = document.createElement("div");
 
     imageContainer.classList.add("col", "p-3");
-    
     const imageCard = document.createElement("div");
     imageCard.classList.add("image-card", "text-white");
 
@@ -29,13 +28,11 @@ function getImage(titre, urlImage) {
         image.src = urlImage;
     } else {
         image.src = "../images/food.jpg";
-    
     }
     image.alt = titre;
     image.classList.add("rounded", "w-100");
     
     imageCard.appendChild(image);
-
     const imageTitle = document.createElement("p");
     imageTitle.classList.add("titre-image");
     imageTitle.textContent = titre;
