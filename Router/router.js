@@ -26,8 +26,8 @@ const LoadContentPage = async () => {
   // Récupération de l'URL actuelle
   const allRoleArray = actualRoute.authorize;
 
-  if(allRoleArray.lenght > 0){
-    if(allRoleArray.includes("diconnected")){
+  if(allRoleArray.length > 0){
+    if(allRoleArray.includes("disconnected")){
       if(isConnected()){
         window.location.replace("/");
       }

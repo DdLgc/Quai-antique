@@ -5,6 +5,9 @@ const apiUrl = "https://127.0.0.1:8000/api/";
 
 
 signoutBtn.addEventListener("click", signout);
+if (isConnected()) {
+    getInfoUser();
+}
 
 function getRole(){
     return getCookie(RoleCookieName);
@@ -49,11 +52,7 @@ function eraseCookie(name) {
 }
 
 function isConnected(){
-    if(getToken() == null || getToken == undefined){
-        return false;
-    }else{
-        return true;
-    }
+    return getToken() !== null;
 }
 
 function showAndHideElementsForRoles(){
@@ -80,7 +79,7 @@ function showAndHideElementsForRoles(){
                 }
                 break;
             case 'client':
-                if(!userConected || role != "client"){
+                if(!userConnected || role != "client"){
                     element.classList.add("d-none")
                 }
                 break;
@@ -89,4 +88,29 @@ function showAndHideElementsForRoles(){
 }
 
 
+function getInfoUser() {
+    let myHeaders = new Headers();
+    myHeaders.append("X-AUTH-TOKEN", getToken());
+
+    let requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+    };
+
+    return fetch(apiUrl + "account/me", requestOptions)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Impossible de récupérer les informations utilisateur");
+            }
+
+            return response.json();
+        })
+        .catch(error => {
+            console.error(
+                "Erreur lors de la récupération des données utilisateur",
+                error
+            );
+        });
 }
+

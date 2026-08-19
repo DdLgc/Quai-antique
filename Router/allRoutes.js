@@ -3,8 +3,8 @@ import Route from "./Route.js";
 export const allRoutes = [
     new Route("/", "Accueil", "/pages/home.html",[]),
     new Route("/galerie", "La galerie", "/pages/galerie.html",[],"js/galerie.js"),
-    new Route("/signin", "Connexion", "/pages/auth/signin.html",["diconnected"],"/js/auth/signin.js"),
-    new Route("/signup", "Inscription", "/pages/auth/signup.html",["diconnected"],"/js/auth/signup.js"),
+    new Route("/signin", "Connexion", "/pages/auth/signin.html",["disconnected"],"/js/auth/signin.js"),
+    new Route("/signup", "Inscription", "/pages/auth/signup.html",["disconnected"],"/js/auth/signup.js"),
     new Route("/account", "Mon compte", "/pages/auth/account.html"),
     new Route("/editPassword", "Changement de mot de passe", "/pages/auth/editPassword.html",["client","admin"]),
     new Route("/allResa", "Vos réservations", "/pages/reservations/allResa.html",["client"],),
