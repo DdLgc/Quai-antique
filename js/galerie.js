@@ -31,7 +31,6 @@ function getImage(titre, urlImage) {
     }
     image.alt = titre;
     image.classList.add("rounded", "w-100");
-    
     imageCard.appendChild(image);
     const imageTitle = document.createElement("p");
     imageTitle.classList.add("titre-image");
@@ -71,6 +70,5 @@ function getImage(titre, urlImage) {
 
 
     imageContainer.appendChild(imageCard);
-  
   return imageContainer;
 }
