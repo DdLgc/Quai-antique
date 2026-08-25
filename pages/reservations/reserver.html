@@ -4,26 +4,23 @@
     </div>
 </div>
 <div class="container">
-    <form>
+    <form id="reservationForm">
         <div class="mb-3">
             <label for="NomInput" class="form-label">Nom</label>
-            <input disabled type="text" class="form-control" id="NomInput" placeholder="Votre nom" value="John"
-                name="Nom">
+            <input disabled type="text" class="form-control" id="NomInput" placeholder="Votre nom" name="Nom">
         </div>
         <div class="mb-3">
             <label for="PrenomInput" class="form-label">Prénom</label>
-            <input disabled type="text" class="form-control" id="PrenomInput" placeholder="Votre prénom" value="Doe"
-                name="Prenom">
+            <input disabled type="text" class="form-control" id="PrenomInput" placeholder="Votre prénom" name="Prenom">
         </div>
         <div class="mb-3">
             <label for="AllergieInput" class="form-label">Allergies</label>
             <input type="text" class="form-control" id="AllergieInput"
-                placeholder="Vos allergies (fruits de mer, arachides..)" value="Cacahouetes" name="Allergies">
+                placeholder="Vos allergies (fruits de mer, arachides..)" name="Allergies">
         </div>
         <div class="mb-3">
-            <label for="NbConvivesInput" class="form-label">Nombres de convives habituel</label>
-            <input type="number" class="form-control" id="NbConvivesInput"
-                placeholder="Combien vous êtes habituellement ?" value="4" name="NbConvives">
+            <label for="NbConvivesInput" class="form-label">Nombre de convives</label>
+            <input type="number" class="form-control" id="NbConvivesInput" placeholder="Combien vous êtes habituellement ?" name="NbConvives" min="1">
         </div>
         <div class="mb-3">
             <label for="DateInput" class="form-label">Date</label>
@@ -56,7 +53,7 @@
             </select>
         </div>
         <div class="text-center">
-            <button type="submit" class="btn btn-primary">Réserver</button>
+            <button type="submit" class="btn btn-primary" id="btnReservation">Réserver</button>
             <button type="button" class="btn btn-danger">Annuler</button>
         </div>
     </form>

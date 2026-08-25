@@ -7,8 +7,8 @@ export const allRoutes = [
     new Route("/signup", "Inscription", "/pages/auth/signup.html",["disconnected"],"/js/auth/signup.js"),
     new Route("/account", "Mon compte", "/pages/auth/account.html", ["ROLE_USER", "ROLE_ADMIN"], "/js/auth/account.js"),
     new Route("/editPassword", "Changement de mot de passe", "/pages/auth/editPassword.html",["ROLE_USER", "ROLE_ADMIN"],"/js/auth/editPassword.js"),
-    new Route("/allResa", "Vos réservations", "/pages/reservations/allResa.html",["ROLE_USER"],),
-    new Route("/reserver", "Réserver", "/pages/reservations/reserver.html",["ROLE_USER"]),
+    new Route("/allResa", "Vos réservations", "/pages/reservations/allResa.html",["ROLE_USER"],"/js/reservations/allResa.js"),
+    new Route("/reserver", "Réserver", "/pages/reservations/reserver.html",["ROLE_USER"], "/js/reservations/reserver.js"),
 ];
 //Le titre s'affiche comme ceci : Route.titre - websitename
 export const websiteName = "Quai Antique";
