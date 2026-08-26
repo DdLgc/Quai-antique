@@ -6,8 +6,7 @@
 
 <div class="container">
     <div class="text-center">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EditionPhotoModal">Ajouter une
-            photo</button>
+        <button type="button" class="btn btn-primary" id="btnAddPicture" data-bs-toggle="modal" data-bs-target="#EditionPhotoModal">Ajouter une photo</button>
     </div>
     <div class="row row-cols-2 row-cols-lg-3 pb-3" id="allImages">
     </div>
@@ -26,7 +25,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="pictureForm">
                     <div class="mb-3">
                         <label for="NamePhotoInput" class="form-label">Titre</label>
                         <input type="text" class="form-control" id="NamePhotoInput"
@@ -37,7 +36,9 @@
                         <input type="file" class="form-control" id="ImageInput">
                     </div>
                     <div class="text-center">
-                        <button type="button" class="btn btn-primary">Enregistrer</button>
+                        <button type="submit" class="btn btn-primary" id="btnSavePicture">
+                            Enregistrer
+                        </button>
                     </div>
                 </form>
             </div>
@@ -45,25 +46,28 @@
     </div>
 </div>
 <!-- Modal suppression -->
-<div class="modal fade" id="DeletePhotoModal" tabindex="-1" aria-labelledby="DeletePhotoModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="DeletePhotoModal" tabindex="-1" aria-labelledby="DeletePhotoModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
+
             <div class="modal-header">
-                <h2 class="modal-title fs-5" id="DeletePhotoModalLabel">Etes-vous sûr de vouloir supprimer cette photo?</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h2 class="modal-title fs-5" id="DeletePhotoModalLabel">
+                    Supprimer cette photo ?
+                </h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer">
+                </button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <p>Titre</p>
-                            <img src="../images/food.jpg" class="rounded w-100">
-                    </div>
-                    <div class="text-center">
-                        <button type="button" class="btn btn-danger">Supprimer</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismmiss="modal">Annuler</button>
-                    </div>
-                </form>
+                <p id="deletePictureTitle"></p>
+                <img id="deletePictureImage" src="" class="rounded w-100" alt="">
+                <div class="text-center pt-3">
+                    <button type="button" class="btn btn-danger" id="btnDeletePicture">
+                        Supprimer
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Annuler
+                    </button>
+                </div>
             </div>
         </div>
     </div>
