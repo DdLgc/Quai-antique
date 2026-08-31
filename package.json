@@ -1,12 +1,1 @@
-{
-  "scripts": {
-    "sass": "sass --watch scss/main.scss scss/main.css"
-  },
-  "dependencies": {
-    "bootstrap": "^5.3.8",
-    "bootstrap-icons": "^1.13.1"
-  },
-  "devDependencies": {
-    "sass": "^1.100.0"
-  }
-}
+{"scripts":{"start":"serve -s . -l 3000","sass":"sass --watch scss/main.scss scss/main.css"},"dependencies":{"bootstrap":"^5.3.8","bootstrap-icons":"^1.13.1"},"devDependencies":{"sass":"^1.100.0","serve":"^14.2.6"}}
