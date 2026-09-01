@@ -1,269 +1,139 @@
 <section class="container py-5">
-
     <div class="text-center mb-5">
         <h1>La carte</h1>
-        <p>Découvrez nos menus et nos plats.</p>
-
-        <button
-            type="button"
-            class="btn btn-primary"
-            id="btnAddMenu"
-            data-show="admin"
-            data-bs-toggle="modal"
-            data-bs-target="#MenuModal">
-            Ajouter un menu
-        </button>
+        <p>Découvrez notre carte et nos menus.</p>
+        <div class="d-flex justify-content-center gap-2 flex-wrap" data-show="admin">
+            <button type="button" class="btn btn-primary" id="btnAddDish" data-bs-toggle="modal" data-bs-target="#DishModal">
+                Ajouter un plat
+            </button>
+            <button type="button" class="btn btn-primary" id="btnAddMenu" data-bs-toggle="modal" data-bs-target="#MenuModal">
+                Ajouter un menu
+            </button>
+        </div>
     </div>
-
-    <div id="menus-container"></div>
+    <section class="mb-5">
+        <h2 class="text-center mb-4">Notre carte</h2>
+        <div id="dishes-container"></div>
+    </section>
+    <section>
+        <h2 class="text-center mb-4">Nos menus</h2>
+        <div id="menus-container"></div>
+    </section>
 </section>
 
-
-<!-- Modal création / modification menu -->
-<div
-    class="modal fade"
-    id="MenuModal"
-    tabindex="-1"
-    aria-labelledby="MenuModalLabel"
-    aria-hidden="true">
-
+<!-- Modal création / modif menu -->
+<div class="modal fade" id="MenuModal" tabindex="-1" aria-labelledby="MenuModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-
             <div class="modal-header">
-                <h2
-                    class="modal-title fs-5"
-                    id="MenuModalLabel">
-                    Ajouter un menu
-                </h2>
-
-                <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Fermer">
+                <h2 class="modal-title fs-5" id="MenuModalLabel">Ajouter un menu</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer">
                 </button>
             </div>
-
             <div class="modal-body">
-
                 <form id="menuForm">
-
                     <div class="mb-3">
-                        <label
-                            for="menuNameInput"
-                            class="form-label">
-                            Nom
-                        </label>
-
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="menuNameInput"
-                            required>
+                        <label for="menuNameInput" class="form-label">Nom</label>
+                        <input type="text" class="form-control" id="menuNameInput" required>
                     </div>
-
                     <div class="mb-3">
-                        <label
-                            for="menuDescriptionInput"
-                            class="form-label">
-                            Description
-                        </label>
-
-                        <textarea
-                            class="form-control"
-                            id="menuDescriptionInput"
-                            rows="3">
-                        </textarea>
+                        <label for="menuDescriptionInput" class="form-label">Description</label>
+                        <textarea class="form-control" id="menuDescriptionInput" rows="3"></textarea>
                     </div>
-
-                    <div class="mb-3">
-                        <label
-                            for="menuPriceInput"
-                            class="form-label">
-                            Prix
-                        </label>
-
-                        <input
-                            type="number"
-                            class="form-control"
-                            id="menuPriceInput"
-                            min="0.01"
-                            step="0.01"
-                            required>
-                    </div>
-
                     <div class="text-center">
-                        <button
-                            type="submit"
-                            class="btn btn-primary">
-                            Enregistrer
-                        </button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
                     </div>
-
                 </form>
-
             </div>
         </div>
     </div>
 </div>
 
-
-<!-- Modal création / modification plat -->
-<div
-    class="modal fade"
-    id="DishModal"
-    tabindex="-1"
-    aria-labelledby="DishModalLabel"
-    aria-hidden="true">
-
+<!-- Modal création / modif plat -->
+<div class="modal fade" id="DishModal" tabindex="-1" aria-labelledby="DishModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-
             <div class="modal-header">
-
-                <h2
-                    class="modal-title fs-5"
-                    id="DishModalLabel">
-                    Ajouter un plat
-                </h2>
-
-                <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Fermer">
-                </button>
-
+                <h2 class="modal-title fs-5" id="DishModalLabel">Ajouter un plat</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
             </div>
-
             <div class="modal-body">
-
                 <form id="dishForm">
-
                     <div class="mb-3">
-                        <label
-                            for="dishNameInput"
-                            class="form-label">
-                            Nom
-                        </label>
-
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="dishNameInput"
-                            required>
+                        <label for="dishNameInput" class="form-label">Nom</label>
+                        <input type="text" class="form-control" id="dishNameInput" required>
                     </div>
-
                     <div class="mb-3">
-                        <label
-                            for="dishDescriptionInput"
-                            class="form-label">
-                            Description
-                        </label>
-
-                        <textarea
-                            class="form-control"
-                            id="dishDescriptionInput"
-                            rows="3">
-                        </textarea>
+                        <label for="dishDescriptionInput" class="form-label">Description</label>
+                        <textarea class="form-control" id="dishDescriptionInput" rows="3"></textarea>
                     </div>
-
                     <div class="mb-3">
-                        <label
-                            for="dishCategoryInput"
-                            class="form-label">
-                            Catégorie
-                        </label>
-
-                        <select
-                            class="form-select"
-                            id="dishCategoryInput"
-                            required>
-
-                            <option value="starter">
-                                Entrée
-                            </option>
-
-                            <option value="main">
-                                Plat
-                            </option>
-
-                            <option value="dessert">
-                                Dessert
-                            </option>
-
+                        <label for="dishCategoryInput" class="form-label">Catégorie</label>
+                        <select class="form-select" id="dishCategoryInput" required>
+                            <option value="starter">Entrée</option>
+                            <option value="main">Plat</option>
+                            <option value="dessert">Dessert</option>
                         </select>
                     </div>
-
-                    <div class="text-center">
-                        <button
-                            type="submit"
-                            class="btn btn-primary">
-                            Enregistrer
-                        </button>
+                    <div class="mb-3">
+                        <label for="dishPriceInput" class="form-label">Prix</label>
+                        <input type="number" class="form-control" id="dishPriceInput" min="0.01" step="0.01" required>
                     </div>
-
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
                 </form>
-
             </div>
         </div>
     </div>
 </div>
 
-
-<!-- Modal suppression -->
-<div
-    class="modal fade"
-    id="DeleteMenuItemModal"
-    tabindex="-1"
-    aria-labelledby="DeleteMenuItemModalLabel"
-    aria-hidden="true">
-
+<!-- Modal création / modif -->
+<div class="modal fade" id="FormulaModal" tabindex="-1" aria-labelledby="FormulaModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-
             <div class="modal-header">
-
-                <h2
-                    class="modal-title fs-5"
-                    id="DeleteMenuItemModalLabel">
-                    Confirmer la suppression
-                </h2>
-
-                <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Fermer">
-                </button>
-
+                <h2 class="modal-title fs-5" id="FormulaModalLabel">Ajouter une formule</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
             </div>
-
             <div class="modal-body">
+                <form id="formulaForm">
+                    <div class="mb-3">
+                        <label for="formulaDescriptionInput" class="form-label">Description</label>
+                        <textarea class="form-control" id="formulaDescriptionInput" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formulaPriceInput" class="form-label">Prix</label>
+                        <input type="number" class="form-control" id="formulaPriceInput" min="0.01" step="0.01" required>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- Modal suppression -->
+<div class="modal fade" id="DeleteMenuItemModal" tabindex="-1" aria-labelledby="DeleteMenuItemModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5" id="DeleteMenuItemModalLabel">Confirmer la suppression</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
                 <p id="deleteMenuItemText"></p>
-
                 <div class="text-center">
-
-                    <button
-                        type="button"
-                        class="btn btn-danger"
-                        id="btnConfirmDeleteMenuItem">
+                    <button type="button" class="btn btn-danger" id="btnConfirmDeleteMenuItem">
                         Supprimer
                     </button>
-
-                    <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         Annuler
                     </button>
-
                 </div>
-
             </div>
-
         </div>
     </div>
 </div>
