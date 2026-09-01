@@ -1,6 +1,4 @@
 @charset "UTF-8";
-@import url("/node_modules/bootstrap/dist/css/bootstrap.min.css");
-@import url("/node_modules/bootstrap-icons/font/bootstrap-icons.css");
 /*!
  * Bootstrap  v5.3.8 (https://getbootstrap.com/)
  * Copyright 2011-2025 The Bootstrap Authors
@@ -11991,6 +11989,76 @@ footer.footer {
   display: block;
   color: #3e4640;
   padding: 10px;
+}
+
+.menu-card {
+  border: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.75rem 1.5rem rgba(62, 70, 64, 0.12) !important;
+}
+.menu-card .card-title {
+  font-family: "Caveat", cursive;
+  font-size: 2.2rem;
+}
+.menu-card .card-body {
+  position: relative;
+}
+.menu-card .h5 {
+  color: #28afb0;
+  font-family: "merienda", serif;
+  border-color: rgba(40, 175, 176, 0.35) !important;
+}
+.menu-card .h6 {
+  color: #3e4640;
+  font-weight: 600;
+}
+.menu-card .text-muted {
+  line-height: 1.6;
+}
+.menu-card .btn {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.menu-card .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0.2rem 0.5rem rgba(62, 70, 64, 0.12);
+}
+
+#menus-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+#MenuModal .modal-content,
+#DishModal .modal-content,
+#DeleteMenuItemModal .modal-content {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 3rem rgba(62, 70, 64, 0.2);
+}
+#MenuModal .modal-header,
+#DishModal .modal-header,
+#DeleteMenuItemModal .modal-header {
+  border-bottom-color: rgba(40, 175, 176, 0.2);
+}
+#MenuModal .modal-title,
+#DishModal .modal-title,
+#DeleteMenuItemModal .modal-title {
+  color: #28afb0;
+  font-family: "merienda", serif;
+}
+
+@media (max-width: 767.98px) {
+  .menu-card .card-body {
+    padding: 1.5rem !important;
+  }
+  .menu-card .card-title {
+    font-size: 1.9rem;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
