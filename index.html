@@ -49,33 +49,66 @@
     </nav>
   </header>
 
-
   <main id="main-page" class="flex-grow-1">
-
   </main>
 
   <footer class="text-white text-center footer bg-dark">
     <div class="row">
       <div class="col-12 col-lg-4">
         <h3 class="text-primary">Nos horaires</h3>
-        <p>Du mardi au dimanche 12:00-14:00 18:00-23:00</p>
+        <div id="opening-hours">
+          <p>Chargement des horaires</p>
+        </div>
+        <button type="button" class="btn btn-outline-primary btn-sm mb-3" id="edit-opening-hours-btn" data-show="admin"
+          data-bs-toggle="modal" data-bs-target="#opening-hours-modal">
+          Modifier les horaires
+        </button>
       </div>
-      <div class="col-6 col-lg-4">
-        <p>Quai Antique <br />
-          5 rue de la route <br />
-          31150 Ville <br />
-          04 01 01 01 01 <br />
+      <div class="col-6 col-lg-4 footer-info">
+        <h3 class="text-primary">Nous trouver</h3>
+
+        <p>
+          Quai Antique <br>
+          5 rue de la route <br>
+          31150 Ville <br>
+          04 01 01 01 01
         </p>
       </div>
-      <div class="col-6 col-lg-4">
-        <p>contact@quai antique.com</p>
-        <img src="/images/logo-long-tr.png" class="w-50" alt="">
+      <div class="col-6 col-lg-4 footer-info">
+        <h3 class="text-primary">Nous contacter</h3>
+        <p>contact@quai-antique.com</p>
+        <img src="/images/logo-long-tr.png" class="footer-logo w-75" alt="Quai Antique">
       </div>
     </div>
   </footer>
+  <div class="modal fade" id="opening-hours-modal" tabindex="-1" aria-labelledby="opening-hours-modal-label"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5" id="opening-hours-modal-label">
+            Modifier les horaires
+          </h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <form id="opening-hours-form">
+            <div id="opening-hours-fields"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Annuler
+          </button>
+          <button type="submit" class="btn btn-primary" form="opening-hours-form">
+            Enregistrer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="js/script.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script type="module" src="Router/router.js"></script>
 </body>
-
 </html>

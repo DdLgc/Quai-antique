@@ -77,10 +77,30 @@ p {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 footer.footer {
-  padding: 15px;
-  position: absolute;
+  padding: 20px 15px;
   width: 100%;
-  bottom: 0;
+
+  h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .footer-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .footer-logo {
+    width: 55%;
+    max-width: 220px;
+    margin: 0 auto;
+  }
 }
 .image-card {
   position: relative;
