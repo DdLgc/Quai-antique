@@ -111,6 +111,7 @@ function getInfoUser() {
 const openingHoursContainer = document.getElementById("opening-hours");
 const openingHoursForm = document.getElementById("opening-hours-form");
 const openingHoursFields = document.getElementById("opening-hours-fields");
+const maxGuestInput = document.getElementById("max-guest-input");
 
 const days = {
   monday: "Lundi",
@@ -180,6 +181,48 @@ function loadOpeningHours() {
       console.error("Erreur lors du chargement des horaires", error);
       openingHoursContainer.innerHTML = "<p>Horaires indisponibles.</p>";
     });
+}
+
+function loadRestaurantCapacity() {
+  fetch(apiUrl + "restaurant/1")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Impossible de récupérer la capacité du restaurant");
+      }
+
+      return response.json();
+    })
+    .then((restaurant) => {
+      maxGuestInput.value = restaurant.maxGuest;
+    })
+    .catch((error) => {
+      console.error("Erreur lors du chargement de la capacité", error);
+    });
+}
+
+function saveRestaurantCapacity() {
+  const maxGuest = Number(maxGuestInput.value);
+
+  if (maxGuest < 1) {
+    return Promise.reject(
+      new Error("La capacité doit être supérieure à 0")
+    );
+  }
+
+  return fetch(apiUrl + "restaurant/1/capacity", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "X-AUTH-TOKEN": getToken(),
+    },
+    body: JSON.stringify({ maxGuest }),
+  }).then((response) => {
+    if (!response.ok) {
+      throw new Error("Impossible de modifier la capacité");
+    }
+
+    return response.json();
+  });
 }
 
 function createOpeningHoursForm(openingHours) {
@@ -306,12 +349,15 @@ function saveOpeningHours(event) {
       return response.json();
     })
     .then((data) => {
-      currentOpeningHours = data.openingHours;
-      displayOpeningHours(currentOpeningHours);
+  currentOpeningHours = data.openingHours;
+  displayOpeningHours(currentOpeningHours);
 
-      const modalElement = document.getElementById("opening-hours-modal");
-      bootstrap.Modal.getOrCreateInstance(modalElement).hide();
-    })
+  return saveRestaurantCapacity();
+})
+.then(() => {
+  const modalElement = document.getElementById("opening-hours-modal");
+  bootstrap.Modal.getOrCreateInstance(modalElement).hide();
+})
     .catch((error) => {
       console.error("Erreur lors de la modification des horaires", error);
     });
@@ -320,4 +366,5 @@ function saveOpeningHours(event) {
 openingHoursForm.addEventListener("submit", saveOpeningHours);
 
 loadOpeningHours();
+loadRestaurantCapacity();
 showAndHideElementsForRoles();

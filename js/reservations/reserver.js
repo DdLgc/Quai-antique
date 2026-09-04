@@ -1,130 +1,144 @@
 const reservationForm = document.getElementById("reservationForm");
-const nomInput = document.getElementById("NomInput");
-const prenomInput = document.getElementById("PrenomInput");
 const allergieInput = document.getElementById("AllergieInput");
 const nbConvivesInput = document.getElementById("NbConvivesInput");
 const dateInput = document.getElementById("DateInput");
 const selectHour = document.getElementById("selectHour");
-const midiRadio = document.getElementById("midiRadio");
-const soirRadio = document.getElementById("soirRadio");
-let maxGuest = null;
+const availabilityMessage = document.getElementById("availabilityMessage");
+const btnReservation = document.getElementById("btnReservation");
 
-getInfoUser().then(user => {
-    if (!user) {
-        return;
+initializeReservationPage();
+
+async function initializeReservationPage() {
+  dateInput.min = new Date().toISOString().split("T")[0];
+
+  if (isConnected()) {
+    const user = await getInfoUser();
+
+    if (user) {
+      allergieInput.value = user.allergy ?? "";
+      nbConvivesInput.value = user.guestNumber ?? "";
+    }
+  }
+
+  dateInput.addEventListener("change", loadAvailability);
+  nbConvivesInput.addEventListener("change", loadAvailability);
+  reservationForm.addEventListener("submit", createReservation);
+}
+
+async function loadAvailability() {
+  const date = dateInput.value;
+  const guestNumber = Number(nbConvivesInput.value);
+
+  selectHour.innerHTML = "";
+  selectHour.disabled = true;
+  availabilityMessage.textContent = "";
+
+  if (!date || guestNumber < 1) {
+    selectHour.innerHTML =
+      '<option value="">Choisissez une date et un nombre de convives</option>';
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      `${apiUrl}reservations/availability?date=${encodeURIComponent(date)}&guestNumber=${guestNumber}`,
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        data.message ?? "Impossible de vérifier les disponibilités",
+      );
     }
 
-    nomInput.value = user.lastName ?? "";
-    prenomInput.value = user.firstName ?? "";
-    allergieInput.value = user.allergy ?? "";
-    nbConvivesInput.value = user.guestNumber ?? "";
-});
+    const availableSlots = data.slots.filter((slot) => slot.available);
 
-reservationForm.addEventListener("submit", createReservation);
-loadRestaurant();
+    if (availableSlots.length === 0) {
+      selectHour.innerHTML =
+        '<option value="">Aucun créneau disponible</option>';
+      availabilityMessage.textContent =
+        "Aucune place disponible pour cette date et ce nombre de convives.";
+      return;
+    }
 
+    selectHour.innerHTML = '<option value="">Choisissez une heure</option>';
 
-function createReservation(event) {
-    event.preventDefault();
+    availableSlots.forEach((slot) => {
+      const option = document.createElement("option");
 
-    const guestNumber = Number(nbConvivesInput.value);
+      option.value = slot.time;
+      option.textContent = `${slot.time} — ${slot.remainingGuests} place(s) restante(s)`;
 
-    if (
-    !dateInput.value ||
-    !selectHour.value ||
-    guestNumber < 1 ||
-    (maxGuest !== null && guestNumber > maxGuest)
-) {
+      selectHour.appendChild(option);
+    });
+
+    selectHour.disabled = false;
+    availabilityMessage.textContent = `${availableSlots.length} créneau(x) disponible(s).`;
+  } catch (error) {
+    console.error("Erreur lors du chargement des disponibilités", error);
+
+    selectHour.innerHTML =
+      '<option value="">Disponibilités indisponibles</option>';
+
+    availabilityMessage.textContent = error.message;
+  }
+}
+
+async function createReservation(event) {
+  event.preventDefault();
+
+  const guestNumber = Number(nbConvivesInput.value);
+
+  if (!dateInput.value || !selectHour.value || guestNumber < 1) {
     return;
-}
+  }
 
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("X-AUTH-TOKEN", getToken());
+  btnReservation.disabled = true;
 
-    const raw = JSON.stringify({
-        date: dateInput.value,
-        time: selectHour.value,
-        guestNumber: guestNumber,
-        allergy: allergieInput.value || null
+  const headers = new Headers();
+  headers.append("Content-Type", "application/json");
+
+  if (isConnected()) {
+    headers.append("X-AUTH-TOKEN", getToken());
+  }
+
+  const reservation = {
+    date: dateInput.value,
+    time: selectHour.value,
+    guestNumber: guestNumber,
+    allergy: allergieInput.value.trim() || null,
+  };
+
+  try {
+    const response = await fetch(apiUrl + "reservations", {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(reservation),
     });
 
-    const requestOptions = {
-        method: "POST",
-        headers: myHeaders,
-        body: raw,
-        redirect: "follow"
-    };
+    const data = await response.json();
 
-    fetch(apiUrl + "reservations", requestOptions)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Impossible de créer la réservation");
-            }
+    if (!response.ok) {
+      throw new Error(data.message ?? "Impossible de créer la réservation");
+    }
 
-            return response.json();
-        })
-        .then(() => {
-            window.location.replace("/allResa");
-        })
-        .catch(error => {
-            console.error(
-                "Erreur lors de la création de la réservation",
-                error
-            );
-        });
-}
+    if (isConnected()) {
+      window.location.replace("/allResa");
+      return;
+    }
 
-function loadRestaurant() {
-    const myHeaders = new Headers();
-    myHeaders.append("X-AUTH-TOKEN", getToken());
+    reservationForm.reset();
+    selectHour.innerHTML =
+      '<option value="">Choisissez d\'abord une date</option>';
+    selectHour.disabled = true;
 
-    fetch(apiUrl + "restaurant/1", {
-        method: "GET",
-        headers: myHeaders,
-        redirect: "follow"
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Impossible de récupérer les informations du restaurant");
-            }
-
-            return response.json();
-        })
-        .then(restaurant => {
-            maxGuest = restaurant.maxGuest;
-            nbConvivesInput.max = restaurant.maxGuest;
-
-            updateHourOptions(
-                soirRadio.checked
-                    ? restaurant.pmOpeningTime
-                    : restaurant.amOpeningTime
-            );
-
-            midiRadio.addEventListener("change", () => {
-                updateHourOptions(restaurant.amOpeningTime);
-            });
-
-            soirRadio.addEventListener("change", () => {
-                updateHourOptions(restaurant.pmOpeningTime);
-            });
-        })
-        .catch(error => {
-            console.error(
-                "Erreur lors du chargement du restaurant",
-                error
-            );
-        });
-}
-
-function updateHourOptions(hours) {
-    selectHour.innerHTML = "";
-
-    hours.forEach(hour => {
-        const option = document.createElement("option");
-        option.value = hour;
-        option.textContent = hour;
-
-        selectHour.appendChild(option);
-    });
+    availabilityMessage.textContent =
+      "Votre réservation a bien été enregistrée.";
+  } catch (error) {
+    console.error("Erreur lors de la création de la réservation", error);
+    availabilityMessage.textContent = error.message;
+  } finally {
+    btnReservation.disabled = false;
+  }
 }
