@@ -24,28 +24,29 @@
                 </div>
             </div>
             <div class="text-center pt-4">
-                <a href="/menus" class="btn btn-primary">Nos menus</a>
+                <a href="/menus" onclick="route(event)" class="btn btn-primary">Nos menus</a>
             </div>
         </div>
     </article>
     <article class="bg-black text-white">
         <div class="container p-4">
-            <h2 class="text-center text-primary">Des produits frais</h2>
-            <div class="row row-cols-2 align-items-center">
-                <div class="col">
-                    <img class="w-75 img-fluid shadow rounded" src="../images/plat.jpg" />
-                </div>
-                <div class="col">
-                    <p class="text-justify">
-                        Notre cuisine met à l’honneur des produits frais, sélectionnés avec soin auprès
-                        de producteurs de la région. Légumes de saison, herbes aromatiques, viandes de
-                        qualité et inspirations savoyardes composent des plats travaillés avec précision,
-                        dans le respect du produit et de sa saveur naturelle.
-                    </p>
-                </div>
-            </div>
-            <div class="text-center pt-4">
-                <a href="/galerie" class="btn btn-primary">Voir la galerie</a>
+            <h2 class="text-center text-primary">Nos plats</h2>
+
+            <p class="text-center">
+                Découvrez quelques-unes des créations du chef Arnaud Michant,
+                préparées à partir de produits frais et locaux.
+            </p>
+
+            <div class="row row-cols-2 row-cols-lg-3 pb-3" id="homeGallery"></div>
+
+            <div class="text-center pt-3">
+                <a href="/galerie" onclick="route(event)" class="btn btn-outline-light me-2">
+                    Voir toute la galerie
+                </a>
+
+                <a href="/reserver" onclick="route(event)" class="btn btn-primary">
+                    Réserver
+                </a>
             </div>
         </div>
     </article>
@@ -54,15 +55,15 @@
             <h2 class="text-center text-primary">Réservation en ligne</h2>
             <div class="row row-cols-2 align-items-center">
                 <div class="col">
+                    <img class="w-75 img-fluid shadow rounded" src="../images/dessert.jpg" />
+                </div>
+                <div class="col">
                     <p class="text-justify">
                         Réservez votre table en quelques clics et profitez d’un moment privilégié dans
                         un cadre chaleureux et raffiné. Indiquez la date, l’heure, le nombre de convives
                         ainsi que vos éventuelles allergies afin que notre équipe puisse préparer votre
                         venue dans les meilleures conditions.
                     </p>
-                </div>
-                <div class="col">
-                    <img class="w-75 img-fluid shadow rounded" src="../images/dessert.jpg" />
                 </div>
             </div>
             <div class="text-center pt-4">
