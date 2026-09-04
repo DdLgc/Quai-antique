@@ -1,119 +1,238 @@
-# Quai Antique - Frontend
+# Quai Antique — Frontend
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
-![Bootstrap Icons](https://img.shields.io/badge/Bootstrap_Icons-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
-![NPM](https://img.shields.io/badge/NPM-CB3837?style=for-the-badge&logo=npm&logoColor=white)
+[![HTML5](https://img.shields.io/badge/HTML5-Markup-E34F26?logo=html5&logoColor=white)]()
+[![Sass](https://img.shields.io/badge/Sass-SCSS-CC6699?logo=sass&logoColor=white)]()
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript&logoColor=black)]()
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.8-7952B3?logo=bootstrap&logoColor=white)]()
+[![Bootstrap Icons](https://img.shields.io/badge/Bootstrap_Icons-1.13.1-7952B3?logo=bootstrap&logoColor=white)]()
+[![Status](https://img.shields.io/badge/Status-Completed-success)]()
 
 ---
 
-## Présentation
+## Description
 
-Quai Antique est une application web développée dans le cadre de ma formation de **Développeur Web et Web Mobile**.
+**Quai Antique** est une application web de restauration gastronomique réalisée dans le cadre de ma formation **Développeur Web et Web Mobile**.
 
-Le projet met en avant le restaurant gastronomique **Quai Antique**, situé à Chambéry et dirigé par le chef **Arnaud Michant**.
+Le projet répond à un sujet d'ECF autour du restaurant fictif Quai Antique, situé à Chambéry et dirigé par le chef Arnaud Michant.
 
-Cette partie Frontend a été développée en **HTML5**, **SCSS**, **JavaScript Vanilla** et **Bootstrap 5**.
+Ce dépôt contient la partie **frontend** de l'application. Elle repose sur HTML, Sass, Bootstrap et JavaScript et communique avec une API Symfony développée dans un dépôt séparé.
 
-Elle communique avec une API Symfony dédiée afin de gérer l'authentification des utilisateurs, les réservations, la galerie ainsi que les différentes fonctionnalités de l'application.
+L'application permet aux visiteurs de découvrir le restaurant, sa galerie, sa carte, ses menus et ses horaires, de créer un compte et de réserver une table.
+
+Une interface adaptée aux rôles permet également à l'administrateur de gérer les principaux contenus du restaurant.
 
 ---
 
 ## Fonctionnalités
 
-### Visiteur
-
-- Consulter la page d'accueil
-- Consulter la galerie photos
-- Consulter les menus du restaurant
-- Créer un compte utilisateur
-- Se connecter à l'application
-
-### Utilisateur connecté
-
-- Réserver une table
-- Gérer son compte
-- Modifier son mot de passe
-
-### Interface
-
-- Design responsive
-- Navigation dynamique via Router JavaScript
-- Interface optimisée pour mobile, tablette et desktop
-- Charte graphique personnalisée avec Bootstrap et SCSS
-
----
-
-## Technologies utilisées
-
 ### Frontend
 
-- HTML5
-- SCSS
-- JavaScript ES6
-- Bootstrap 5
-- Bootstrap Icons
+- Navigation dynamique avec routeur JavaScript personnalisé
+- Interface responsive desktop, tablette et mobile
+- Authentification utilisateur
+- Gestion de l'affichage selon le rôle utilisateur
+- Création et gestion d'un compte client
+- Galerie dynamique de photographies sur la page d'accueil
+- Affichage du titre des photographies au survol
+- Galerie complète administrable
+- Affichage de la carte par catégories
+- Présentation des menus et de leurs formules
+- Affichage dynamique des horaires d'ouverture
+- Réservation accessible aux visiteurs et aux clients
+- Vérification dynamique des disponibilités sans rechargement
+- Créneaux de réservation par intervalles de 15 minutes
+- Gestion du nombre maximal de convives
+- Préremplissage des préférences de réservation des clients connectés
+- Gestion des allergies
+- Interface d'administration pour les contenus du restaurant
 
-### Outils
+### Backend associé
 
-- Git
-- GitHub
-- Visual Studio Code
-- Node.js
-- NPM
-- Sass
+Le frontend communique avec une API Symfony permettant notamment :
+
+- Authentification et gestion des utilisateurs
+- Gestion des rôles et autorisations
+- CRUD des photographies
+- CRUD des plats
+- CRUD des menus et formules
+- Gestion des horaires d'ouverture
+- Gestion des réservations
+- Calcul des disponibilités
+- Gestion de la capacité maximale du restaurant
 
 ---
 
-## Structure du projet
+## Conformité au sujet ECF
 
-```text
-quaiAntiqueFront/
-│
-├── images/
-├── pages/
-├── router/
-│   ├── Route.js
-│   ├── allRoutes.js
-│   └── router.js
-│
-├── scss/
-│   ├── main.scss
-│   └── _custom.scss
-│
-├── js/
-├── index.html
-├── package.json
-└── package-lock.json
-```
+Le projet couvre les principales user stories demandées dans le sujet **Restaurant — Quai Antique** :
+
+- **US1 — Connexion** : authentification client et administrateur depuis un formulaire commun
+- **US2 — Galerie** : photographies affichées sur l'accueil, titres au survol et gestion administrateur
+- **US3 — Carte** : plats classés par catégories avec titre, description et prix
+- **US4 — Menus** : menus composés d'une ou plusieurs formules avec description et prix
+- **US5 — Horaires** : horaires affichés dans le pied de page et modifiables par l'administrateur
+- **US6 — Réservation** : réservation visiteur/client, disponibilités dynamiques, créneaux de 15 minutes et capacité maximale
+- **US7 — Allergies** : préférences client enregistrées et préremplies lors d'une réservation
+
+---
+
+## Stack technique
+
+- HTML5
+- SCSS / Sass
+- JavaScript ES6+
+- Bootstrap 5.3.8
+- Bootstrap Icons 1.13.1
+- Fetch API
+- Node.js
+- NPM
+- Git
+- GitHub
 
 ---
 
 ## Installation
 
-### 1. Cloner le projet
+### Prérequis
+
+- Git
+- Node.js
+- NPM
+- Un navigateur web moderne
+- Le backend Quai Antique en fonctionnement
+
+### Étapes
+
+#### 1. Cloner le projet
 
 ```bash
 git clone https://github.com/DdLgc/Quai-antique.git
 ```
 
-### 2. Installer les dépendances
+#### 2. Accéder au projet
+
+```bash
+cd Quai-antique
+```
+
+#### 3. Installer les dépendances
 
 ```bash
 npm install
 ```
 
-### 3. Compiler le SCSS
+#### 4. Lancer le frontend
+
+```bash
+npm start
+```
+
+Le frontend est alors accessible par défaut à l'adresse :
+
+```text
+http://localhost:3000
+```
+
+#### 5. Compiler le Sass en développement
+
+Si des modifications sont apportées aux fichiers Sass :
 
 ```bash
 npm run sass
 ```
 
-### 4. Lancer le projet
+Le CSS généré est ensuite utilisé par l'application.
 
-Ouvrir le fichier `index.html` via un serveur local.
+---
+
+## Configuration de l'API
+
+Le frontend communique avec l'API Symfony locale via :
+
+```text
+https://127.0.0.1:8000/api/
+```
+
+---
+
+## Utilisation
+
+### Visiteur
+
+Un visiteur peut :
+
+- Consulter l'accueil
+- Découvrir la galerie
+- Consulter la carte
+- Consulter les menus
+- Voir les horaires d'ouverture
+- Vérifier les disponibilités
+- Réserver une table
+- Mentionner des allergies
+- Créer un compte
+- Se connecter
+
+### Client connecté
+
+Un client connecté peut également :
+
+- Retrouver ses préférences de réservation
+- Préremplir automatiquement son nombre habituel de convives
+- Préremplir ses allergies
+- Consulter ses réservations
+- Supprimer une réservation
+- Modifier son compte
+- Modifier son mot de passe
+- Supprimer son compte
+
+### Administrateur
+
+L'administrateur dispose des fonctionnalités nécessaires pour gérer :
+
+- La galerie
+- Les plats
+- Les menus
+- Les formules
+- Les horaires d'ouverture
+- La capacité maximale du restaurant
+
+---
+
+## Architecture frontend
+
+Le projet utilise une architecture de type **Single Page Application légère** reposant sur un routeur JavaScript personnalisé.
+
+Les principales routes sont définies dans :
+
+```text
+Router/allRoutes.js
+```
+
+Le chargement dynamique des pages est géré par :
+
+```text
+Router/router.js
+```
+
+Chaque route peut également définir les droits nécessaires à son accès.
+
+---
+
+## Gestion des rôles
+
+L'interface adapte les éléments visibles selon l'état et le rôle de l'utilisateur.
+
+Les principaux profils sont :
+
+```text
+Visiteur
+ROLE_USER
+ROLE_ADMIN
+```
+
+Des attributs `data-show` permettent d'afficher ou masquer certains éléments de l'interface selon les autorisations.
+
+Les contrôles frontend améliorent l'expérience utilisateur, mais les autorisations sensibles sont également contrôlées côté backend.
 
 ---
 
@@ -121,11 +240,12 @@ Ouvrir le fichier `index.html` via un serveur local.
 
 ### Couleurs principales
 
-| Couleur | Valeur |
-|---|---|
+| Élément | Valeur |
+| --- | --- |
 | Primaire | `#28afb0` |
 | Secondaire | `#f4d35e` |
 | Noir | `#3e4640` |
+| Blanc | `rgb(255, 243, 243)` |
 
 ### Typographies
 
@@ -135,55 +255,113 @@ Ouvrir le fichier `index.html` via un serveur local.
 
 ---
 
-## Routage
+## Compétences développées
 
-L'application utilise un système de routage côté client développé en **JavaScript Vanilla**.
+- Intégration d'une interface responsive
+- Développement JavaScript dynamique
+- Création d'un routeur frontend personnalisé
+- Consommation d'une API REST avec Fetch
+- Gestion de l'authentification côté client
+- Mise en place d'une interface basée sur les rôles
+- Validation de formulaires
+- Manipulation du DOM
+- Gestion dynamique des réservations
+- Prévention des injections XSS sur les données affichées
+- Utilisation de Sass et Bootstrap
+- Git & GitHub
+- Workflow professionnel
 
-Les routes sont centralisées dans :
+---
+
+## Workflow Git
+
+Le développement utilise des branches dédiées selon la nature des modifications :
+
+- `feature/*`
+- `fix/*`
+- `security/*`
+- `refactor/*`
+- `docs/*`
+- `release/*`
+
+Les commits suivent la convention **Conventional Commits** :
 
 ```text
-router/allRoutes.js
+feat:
+fix:
+docs:
+refactor:
+style:
+chore:
 ```
 
-Elles sont chargées dynamiquement via :
+Les fonctionnalités sont développées et vérifiées sur leur branche avant intégration dans `main`.
+
+---
+
+## Améliorations possibles
+
+- Ajouter des tests automatisés frontend
+- Améliorer la gestion globale des erreurs API
+- Ajouter davantage de retours visuels pour les actions administrateur
+- Améliorer encore l'accessibilité et la navigation clavier
+- Migrer ultérieurement vers une architecture frontend basée sur un framework
+
+---
+
+## Liens
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ddlgc-portfolio.netlify.app/)
+
+[![GitHub](https://img.shields.io/badge/GitHub-Frontend-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/DdLgc/Quai-antique)
+
+[![Backend](https://img.shields.io/badge/GitHub-Backend-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/DdLgc/Quai-antique-Back)
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/david-le-gouellec-551322243/)
+
+---
+
+## Arborescence
 
 ```text
-router/router.js
+Quai-antique/
+│
+├── images/
+├── js/
+│   ├── auth/
+│   ├── reservations/
+│   ├── galerie.js
+│   ├── home.js
+│   ├── menus.js
+│   └── script.js
+│
+├── pages/
+│   ├── auth/
+│   ├── reservations/
+│   ├── galerie.html
+│   ├── home.html
+│   └── menus.html
+│
+├── Router/
+│   ├── Route.js
+│   ├── allRoutes.js
+│   └── router.js
+│
+├── scss/
+│   ├── main.scss
+│   └── main.css
+│
+├── index.html
+├── package.json
+├── package-lock.json
+└── README.md
 ```
 
 ---
 
-## Responsive Design
+## Captures d'écran
 
-L'interface est pensée pour offrir une expérience utilisateur adaptée sur :
-
-- Mobile
-- Tablette
-- Ordinateur
-
----
-
-## Backend
-
-L'API Symfony associée au projet est développée dans un dépôt séparé.
-
-Elle gère notamment :
-
-- L'authentification des utilisateurs
-- Les réservations
-- La galerie
-- Les rôles et permissions
-- La gestion des données du restaurant
-
----
-
-## Projet pédagogique
-
-Projet réalisé dans le cadre du titre professionnel :
-
-**Développeur Web et Web Mobile - DWWM**
-
-Formation Studi.
+Les captures du projet sont utilisées dans mon portfolio afin de présenter l'interface et les principales fonctionnalités de Quai Antique.
 
 ---
 
@@ -191,4 +369,12 @@ Formation Studi.
 
 **David Le Gouellec**
 
-GitHub : [DdLgc](https://github.com/DdLgc)
+Développeur Web Full Stack en formation, avec une attention particulière portée à la structuration des projets, à la maintenabilité, à la sécurité et aux bonnes pratiques Git.
+
+---
+
+## Licence
+
+Projet réalisé à des fins pédagogiques dans le cadre de la formation Développeur Web et Web Mobile.
+
+Vous êtes libre de consulter ce dépôt et de l'utiliser comme support d'apprentissage.
