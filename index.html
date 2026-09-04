@@ -93,8 +93,26 @@
         </div>
         <div class="modal-body">
           <form id="opening-hours-form">
-            <div id="opening-hours-fields"></div>
-          </form>
+    <div id="opening-hours-fields"></div>
+
+    <hr>
+
+    <div class="mb-3">
+        <label for="max-guest-input" class="form-label">
+            Capacité maximale du restaurant
+        </label>
+        <input
+            type="number"
+            class="form-control"
+            id="max-guest-input"
+            min="1"
+            required
+        >
+        <div class="form-text">
+            Nombre maximal de convives pouvant être accueillis.
+        </div>
+    </div>
+</form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
