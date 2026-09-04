@@ -92,11 +92,15 @@ function inscrireUtilisateur() {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
+  const guestNumber = dataForm.get("guestNumber");
+
   const raw = JSON.stringify({
     firstName: dataForm.get("prenom"),
     lastName: dataForm.get("nom"),
     email: dataForm.get("email"),
     password: dataForm.get("mdp"),
+    guestNumber: guestNumber ? Number(guestNumber) : null,
+    allergy: dataForm.get("allergy")?.trim() || null,
   });
 
   const requestOptions = {
