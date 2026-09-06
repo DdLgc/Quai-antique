@@ -184,7 +184,11 @@ function loadOpeningHours() {
 }
 
 function loadRestaurantCapacity() {
-  fetch(apiUrl + "restaurant/1")
+  fetch(apiUrl + "restaurant/1", {
+    headers: {
+      "X-AUTH-TOKEN": getToken(),
+    },
+  })
     .then((response) => {
       if (!response.ok) {
         throw new Error("Impossible de récupérer la capacité du restaurant");
@@ -366,5 +370,8 @@ function saveOpeningHours(event) {
 openingHoursForm.addEventListener("submit", saveOpeningHours);
 
 loadOpeningHours();
-loadRestaurantCapacity();
 showAndHideElementsForRoles();
+
+if (getCookie(RoleCookieName) === "ROLE_ADMIN") {
+  loadRestaurantCapacity();
+}
