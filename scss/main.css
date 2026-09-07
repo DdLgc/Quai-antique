@@ -11882,7 +11882,7 @@ p {
   position: relative;
   min-height: 300px;
   margin-bottom: 15px;
-  background-image: linear-gradient(rgba(62, 70, 64, 0.7), rgba(62, 70, 64, 0.7)), url("../images/FondHeroScene.jpg");
+  background-image: linear-gradient(rgba(62, 70, 64, 0.7), rgba(62, 70, 64, 0.7)), url("../images/hero-background.jpg");
   background-size: cover;
   background-position: center;
 }
