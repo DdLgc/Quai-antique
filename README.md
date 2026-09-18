@@ -245,7 +245,7 @@ Deux niveaux d'accès permettent de tester les différentes fonctionnalités de 
 | Rôle | E-mail | Mot de passe |
 | --- | --- | --- |
 | Administrateur | `admin@quai.fr` | `AdminTest1` |
-| | Client | `email.5@studi.fr` | `password5` |
+| Client |  `email.5@studi.fr` | `password5` |
 
 > Ces identifiants sont exclusivement destinés à **l'environnement local et à la démonstration**. Ils ne doivent pas être utilisés comme identifiants de production.
 
@@ -376,7 +376,7 @@ docs(readme): update frontend documentation
 
 - Ajouter une suite de tests frontend automatisés
 - Améliorer la centralisation de la gestion des erreurs API
-- Centraliser davantage les appels `fetch()`
+- Centraliser d'avantage les appels `fetch()`
 - Améliorer la gestion de l'état d'authentification
 - Préparer la configuration frontend pour un environnement de production
 
@@ -384,10 +384,10 @@ docs(readme): update frontend documentation
 
 ## Liens
 
-[![Frontend](https://img.shields.io/badge/FRONTEND-Quai_Antique-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/DdLgc/Quai-antique)
+[![Frontend](https://img.shields.io/badge/FRONTEND-Quai_Antique-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/DdLgc/Quai-antique)  
 [![Backend](https://img.shields.io/badge/BACKEND-API_Symfony-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/DdLgc/Quai-antique-Back)
 
-[![Portfolio](https://img.shields.io/badge/PORTFOLIO-David_Le_Gouellec-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://ddlgc-portfolio.netlify.app/)
+[![Portfolio](https://img.shields.io/badge/PORTFOLIO-David_Le_Gouellec-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://ddlgc-portfolio.netlify.app/)  
 [![LinkedIn](https://img.shields.io/badge/LINKEDIN-David_Le_Gouellec-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/david-le-gouellec-551322243/)
 
 ---
